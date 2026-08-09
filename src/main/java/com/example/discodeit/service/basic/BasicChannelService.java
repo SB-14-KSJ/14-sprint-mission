@@ -1,20 +1,17 @@
 package com.example.discodeit.service.basic;
 
-import com.sprint.mission.discodeit.entity.Channel;
-import com.sprint.mission.discodeit.entity.ChannelType;
-import com.sprint.mission.discodeit.repository.ChannelRepository;
-import com.sprint.mission.discodeit.service.ChannelService;
+import com.example.discodeit.entity.Channel;
+import com.example.discodeit.entity.ChannelType;
+import com.example.discodeit.repository.ChannelRepository;
+import com.example.discodeit.service.ChannelService;import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
+@RequiredArgsConstructor
 public class BasicChannelService implements ChannelService {
     private final ChannelRepository channelRepository;
-
-    public BasicChannelService(ChannelRepository channelRepository) {
-        this.channelRepository = channelRepository;
-    }
 
     @Override
     public Channel create(ChannelType type, String name, String description) {
@@ -25,7 +22,7 @@ public class BasicChannelService implements ChannelService {
     @Override
     public Channel find(UUID channelId) {
         return channelRepository.findById(channelId)
-                        .orElseThrow(() -> new NoSuchElementException("Channel with id " + channelId + " not found"));
+                .orElseThrow(() -> new NoSuchElementException("Channel with id " + channelId + " not found"));
     }
 
     @Override

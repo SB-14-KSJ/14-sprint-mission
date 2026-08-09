@@ -1,7 +1,7 @@
 package com.example.discodeit.repository.file;
 
-import com.sprint.mission.discodeit.entity.User;
-import com.sprint.mission.discodeit.repository.UserRepository;
+import com.example.discodeit.entity.User;
+import com.example.discodeit.repository.UserRepository;
 
 import java.io.*;
 import java.nio.file.Files;

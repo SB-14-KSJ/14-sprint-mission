@@ -1,7 +1,7 @@
 package com.example.discodeit.repository.jcf;
 
-import com.sprint.mission.discodeit.entity.User;
-import com.sprint.mission.discodeit.repository.UserRepository;
+import com.example.discodeit.entity.User;
+import com.example.discodeit.repository.UserRepository;
 
 import java.util.*;
 

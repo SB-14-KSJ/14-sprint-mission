@@ -4,20 +4,16 @@ import com.example.discodeit.entity.Channel;
 import com.example.discodeit.entity.ChannelType;
 import com.example.discodeit.entity.Message;
 import com.example.discodeit.entity.User;
-import com.example.discodeit.repository.ChannelRepository;
-import com.example.discodeit.repository.MessageRepository;
-import com.example.discodeit.repository.UserRepository;
-import com.example.discodeit.repository.file.FileChannelRepository;
-import com.example.discodeit.repository.file.FileMessageRepository;
-import com.example.discodeit.repository.file.FileUserRepository;
 import com.example.discodeit.service.ChannelService;
 import com.example.discodeit.service.MessageService;
 import com.example.discodeit.service.UserService;
-import com.example.discodeit.service.basic.BasicChannelService;
-import com.example.discodeit.service.basic.BasicMessageService;
-import com.example.discodeit.service.basic.BasicUserService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
-public class JavaApplication {
+@SpringBootApplication
+public class DiscodeitApplication {
+
     static User setupUser(UserService userService) {
         User user = userService.create("woody", "woody@codeit.com", "woody1234");
         return user;
@@ -34,15 +30,12 @@ public class JavaApplication {
     }
 
     public static void main(String[] args) {
-        // 레포지토리 초기화
-        UserRepository userRepository = new FileUserRepository();
-        ChannelRepository channelRepository = new FileChannelRepository();
-        MessageRepository messageRepository = new FileMessageRepository();
+        ConfigurableApplicationContext context = SpringApplication.run(DiscodeitApplication.class, args);
 
-        // 서비스 초기화
-        UserService userService = new BasicUserService(userRepository);
-        ChannelService channelService = new BasicChannelService(channelRepository);
-        MessageService messageService = new BasicMessageService(messageRepository, channelRepository, userRepository);
+        // 서비스 초기화 - Spring Context에서 Bean 조회
+        UserService userService = context.getBean(UserService.class);
+        ChannelService channelService = context.getBean(ChannelService.class);
+        MessageService messageService = context.getBean(MessageService.class);
 
         // 셋업
         User user = setupUser(userService);

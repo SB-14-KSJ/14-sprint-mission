@@ -1,7 +1,7 @@
 package com.example.discodeit.repository.file;
 
-import com.sprint.mission.discodeit.entity.Message;
-import com.sprint.mission.discodeit.repository.MessageRepository;
+import com.example.discodeit.entity.Message;
+import com.example.discodeit.repository.MessageRepository;
 
 import java.io.*;
 import java.nio.file.Files;

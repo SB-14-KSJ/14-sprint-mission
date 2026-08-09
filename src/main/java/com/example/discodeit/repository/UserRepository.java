@@ -1,6 +1,6 @@
 package com.example.discodeit.repository;
 
-import com.sprint.mission.discodeit.entity.User;
+import com.example.discodeit.entity.User;
 
 import java.util.List;
 import java.util.Optional;
